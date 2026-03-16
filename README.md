@@ -43,7 +43,7 @@
 ------
 ### 2024-5-23 更新 目录增加附录格式表达
 
-> 在 master_pang.tex 主文件中的 \end{document} 之前插入（即，末尾）。 注意：后续插入相关的 pdf 文件也应该要在这个 \end{document} 之前。
+> 在 `main.tex` 主文件中的 `\end{document}` 之前插入（即，末尾）。注意：后续插入相关的 PDF 文件也应该放在这个 `\end{document}` 之前。
 >```tex
 >% 在目录中添加一段文本
 >\addtocontents{toc}{\noindent 附：指导教师对研究生学位论文的学术评语\par}
@@ -89,13 +89,13 @@
 
 -  **参考文献格式** 提示修改，学校引用格式由`gbt7714-2005`更新为`gbt7714-2015`格式 , 根据@**[modest-Hamilton](https://github.com/modest-Hamilton)** 在Issue#11中的分享。
 
->- 添加两个引用格式文件 gbt7714.sty 以及 gbt7714-numerical.bst ，修改 master_pang.tex中引用格式
+>- 添加两个引用格式文件 `template/gbt7714.sty` 以及 `template/gbt7714-numerical.bst`，修改 `main.tex` 中引用格式
 >
 >```tex
 >%增加包的使用 %参考文献
->\usepackage{gbt7714}
->% master_pang.tex 文件 135行左右的代码
->\bibliographystyle{gbt7714-numerical} 
+>\usepackage{template/gbt7714}
+>% `main.tex` 文件中参考文献设置相关代码
+>\bibliographystyle{template/gbt7714-numerical} 
 >```
 >
 >**请注意会出现 arXiv 文章引用错误，无法显示arXiv等编号，故，仍建议使用 gbt7714-2005 格式**

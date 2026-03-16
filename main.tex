@@ -1,4 +1,4 @@
-\documentclass[UTF8,AutoFakeBold]{szu-master}
+\documentclass[UTF8,AutoFakeBold]{template/szu-master}
 \renewcommand{\titleCN}{基于XXX研究}
 \renewcommand{\titleEN}{The Research Base on XXXX}
 
@@ -36,7 +36,7 @@
 
 % \usepackage{algorithmicx,algorithm}
 \usepackage{epsfig,bm}
-\usepackage{slashbox}
+\usepackage{template/slashbox}
 \usepackage{enumitem}
 \usepackage{pifont} % 带圈数字 \ding{172}=① \ding{173}=② 等
 \usepackage{amssymb,amsthm,amssymb}
@@ -64,7 +64,7 @@
 
 
 % 重新调整参考文献项目之间的行距
-\usepackage{bibspacing}
+\usepackage{template/bib-spacing}
 \setlength{\bibspacing}{1\baselineskip}
 
 %给目录和参考文献加上超链接
@@ -99,17 +99,17 @@
 
 \titleformat{\subsection}{\zihao{-3}\heiti\bfseries\sectionef}{\thesubsection}{1em}{}
 
-\titleformat{\subsubsection}{\zihao{4}\bfseries\fontspec{songti-Bold.otf}}{\thesubsubsection}{1em}{}
+\titleformat{\subsubsection}{\zihao{4}\bfseries\fontspec{fonts/songti-bold.otf}}{\thesubsubsection}{1em}{}
 
 
 % 定义目录标题样式
-\titlecontents{section}[0em]{\bfseries\fontspec{songti-Bold.otf}\zihao{-4}}{\contentspush{\thecontentslabel\hspace{1em}}}{}{\titlerule*[0.4pc]{.}\contentspage\vspace{1.6pt}}%
+\titlecontents{section}[0em]{\bfseries\fontspec{fonts/songti-bold.otf}\zihao{-4}}{\contentspush{\thecontentslabel\hspace{1em}}}{}{\titlerule*[0.4pc]{.}\contentspage\vspace{1.6pt}}%
 
 %\titlecontents{section}[0em]{\bfseries\zihao{-4}}{\contentspush{\thecontentslabel\hspace{1em}}}{}{\titlerule*[0.4pc]{.}\contentspage\vspace{1.6pt}}%
 
-\titlecontents{subsection}[1em]{\fontspec{simsun.ttc}\zihao{-4}}{{\thecontentslabel}\hspace{1em}}{}{\titlerule*[0.4pc]{.}\contentspage\vspace{1.6pt}}
+\titlecontents{subsection}[1em]{\fontspec{fonts/simsun.ttc}\zihao{-4}}{{\thecontentslabel}\hspace{1em}}{}{\titlerule*[0.4pc]{.}\contentspage\vspace{1.6pt}}
 
-\titlecontents{subsubsection}[1.8em]{\fontspec{simsun.ttc}\zihao{-4}}{\thecontentslabel\hspace{1em}}{}{\titlerule*[0.4pc]{.}\contentspage\vspace{1.6pt}}
+\titlecontents{subsubsection}[1.8em]{\fontspec{fonts/simsun.ttc}\zihao{-4}}{\thecontentslabel\hspace{1em}}{}{\titlerule*[0.4pc]{.}\contentspage\vspace{1.6pt}}
 
 
 
@@ -118,7 +118,7 @@
 \begin{document}
 	
 %封面 自行配置生成pdf文件导入即可
-\includepdf[pages={1,2}]{chapter/masterPage.pdf}
+\includepdf[pages={1,2}]{chapters/master-page.pdf}
 	
 % 全局页眉页脚：确保摘要等多页内容的后续页保持 fancy 样式
 % 解决 issue: https://github.com/Ftine/SZU_Latex_Master_Template/issues/19
@@ -127,14 +127,14 @@
 \fancyhead[C]{\songti\zihao{5}{\titleEN}}
 	
 %中英文摘要
-\input{chapter/abstract.tex} 
+\input{chapters/abstract.tex} 
 	
 \setlength{\baselineskip}{23pt} %设置行距23磅
 	
 \tableofcontents	%目录
 
 %缩略语
-\input{chapter/sign_and_ABC.tex}
+\input{chapters/sign-and-abc.tex}
 
 %此处为原cls文件中有关后续正文页面的页眉页脚设置
 \newpage
@@ -184,11 +184,11 @@
 %adding chapters 1-5 从1开始计数
 \setcounter{page}{1}
 
-\input{chapter/cp1.tex}
-\input{chapter/cp2.tex}
-\input{chapter/cp3.tex}
-\input{chapter/cp4.tex}
-\input{chapter/cp5.tex}
+\input{chapters/cp-1.tex}
+\input{chapters/cp-2.tex}
+\input{chapters/cp-3.tex}
+\input{chapters/cp-4.tex}
+\input{chapters/cp-5.tex}
 
 
 \clearpage
@@ -198,8 +198,8 @@
 \fancyfoot[C]{\songti\zihao{5}{\thepage}}
 
 \begin{spacing}{1.8}
-	\bibliographystyle{gbt7714-2005} 
-	\bibliography{ref_paper}
+	\bibliographystyle{template/gbt7714-2005} 
+	\bibliography{bib/ref-paper}
 \end{spacing}
 
 
@@ -208,30 +208,30 @@
 \fancyhead{}
 \fancyhead[C]{\songti\zihao{5}{致谢}}
 \fancyfoot[C]{\songti\zihao{5}{\thepage}}
-\input{chapter/thanks.tex}
+\input{chapters/thanks.tex}
 
 \clearpage
 \fancyhead{}
 \fancyhead[C]{\songti\zihao{5}{攻读硕士学位期间的学术成果}}
 \fancyfoot[C]{\songti\zihao{5}{\thepage}}
-\input{chapter/myPapers.tex}
+\input{chapters/my-papers.tex}
 
 % 添加学术评语目录条目
 %\addtocontents{toc}{\protect\vspace{1.6pt}}
-%\addtocontents{toc}{\noindent\protect\fontspec{songti-Bold.otf}\protect\zihao{-4}\protect\normalfont 附：指导教师对研究生学位论文的学术评语\par}
+%\addtocontents{toc}{\noindent\protect\fontspec{fonts/songti-bold.otf}\protect\zihao{-4}\protect\normalfont 附：指导教师对研究生学位论文的学术评语\par}
 % 添加答辩决议书目录条目
 %\addtocontents{toc}{\protect\vspace{1.6pt}}
-%\addtocontents{toc}{\noindent\protect\fontspec{songti-Bold.otf}\protect\zihao{-4}\protect\normalfont ~~~~~~~~答辩委员会决议书\par}
+%\addtocontents{toc}{\noindent\protect\fontspec{fonts/songti-bold.otf}\protect\zihao{-4}\protect\normalfont ~~~~~~~~答辩委员会决议书\par}
 % 添加学术评语页面
 %\clearpage
-%\includepdf[pages={1}]{chapter/comment.pdf}
+%\includepdf[pages={1}]{chapters/comment.pdf}
 % 添加答辩决议书页面
 %\clearpage
-%\includepdf[pages={1,2}]{chapter/decision.pdf}
+%\includepdf[pages={1,2}]{chapters/decision.pdf}
 
 %当需要在论文末尾插入相关的文件，可以生成pdf文件格式进行附加，附加一页就是1，多页就是1，2，3
-%\includepdf[pages={1}]{chapter/comment.pdf}
-%\includepdf[pages={1}]{chapter/decision.pdf}
+%\includepdf[pages={1}]{chapters/comment.pdf}
+%\includepdf[pages={1}]{chapters/decision.pdf}
 
 \end{document}
 

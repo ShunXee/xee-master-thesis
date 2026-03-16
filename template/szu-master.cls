@@ -46,9 +46,9 @@
 %全局英文字体
 \setmainfont{Times New Roman}
 %全文字体
-\setCJKmainfont{simsun.ttc}
+\setCJKmainfont{fonts/simsun.ttc}
 %重新定义宋体命令，使用simsun.ttc以支持生僻字
-\setCJKfamilyfont{zhsong}{simsun.ttc}
+\setCJKfamilyfont{zhsong}{fonts/simsun.ttc}
 \renewcommand{\songti}{\CJKfamily{zhsong}} 
 %设置页眉的横线
 \renewcommand{\headrule}{%
@@ -245,19 +245,19 @@
 
 \titleformat{\subsection}{\zihao{-3}\heiti\bfseries\sectionef}{\thesubsection}{1em}{}
 
-\titleformat{\subsubsection}{\zihao{4}\bfseries\fontspec{songti-Bold.otf}}{\thesubsubsection}{1em}{}
+\titleformat{\subsubsection}{\zihao{4}\bfseries\fontspec{fonts/songti-bold.otf}}{\thesubsubsection}{1em}{}
 
 %定义四级标题样式
-\titleformat{\paragraph}{\zihao{-4}\bfseries\fontspec{songti-Bold.otf}}{\theparagraph}{1em}{}
+\titleformat{\paragraph}{\zihao{-4}\bfseries\fontspec{fonts/songti-bold.otf}}{\theparagraph}{1em}{}
 
 % 定义目录标题样式
-\titlecontents{section}[0em]{\bfseries\fontspec{songti-Bold.otf}\zihao{-4}}{\contentspush{\thecontentslabel\hspace{1em}}}{}{\titlerule*[0.4pc]{.}\contentspage\vspace{1.6pt}}%
+\titlecontents{section}[0em]{\bfseries\fontspec{fonts/songti-bold.otf}\zihao{-4}}{\contentspush{\thecontentslabel\hspace{1em}}}{}{\titlerule*[0.4pc]{.}\contentspage\vspace{1.6pt}}%
 
 %\titlecontents{section}[0em]{\bfseries\zihao{-4}}{\contentspush{\thecontentslabel\hspace{1em}}}{}{\titlerule*[0.4pc]{.}\contentspage\vspace{1.6pt}}%
 
-\titlecontents{subsection}[1em]{\fontspec{simsun.ttc}\zihao{-4}}{{\thecontentslabel}\hspace{1em}}{}{\titlerule*[0.4pc]{.}\contentspage\vspace{1.6pt}}
+\titlecontents{subsection}[1em]{\fontspec{fonts/simsun.ttc}\zihao{-4}}{{\thecontentslabel}\hspace{1em}}{}{\titlerule*[0.4pc]{.}\contentspage\vspace{1.6pt}}
 
-\titlecontents{subsubsection}[1.8em]{\fontspec{simsun.ttc}\zihao{-4}}{\thecontentslabel\hspace{1em}}{}{\titlerule*[0.4pc]{.}\contentspage\vspace{1.6pt}}
+\titlecontents{subsubsection}[1.8em]{\fontspec{fonts/simsun.ttc}\zihao{-4}}{\thecontentslabel\hspace{1em}}{}{\titlerule*[0.4pc]{.}\contentspage\vspace{1.6pt}}
 
 
 
