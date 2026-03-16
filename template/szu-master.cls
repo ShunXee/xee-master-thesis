@@ -1,11 +1,11 @@
 \NeedsTeXFormat{LaTeX2e}[2007/10/19]
 \ProvidesClass{szu-master}
 [2024/04/01 v1 Thesis Template for SZU Postgraduate]
-\LoadClass[cs4size,12pt,a4paper,fntef,UTF8]{ctexart}[2024/4/1]
+\LoadClass[cs4size,12pt,a4paper,fntef,UTF8,fontset=none]{ctexart}[2024/4/1]
 % 源代码地址： https://github.com/Ftine/SZU_Latex_Master_Template 
 
 \RequirePackage{amsmath,amsthm,amsfonts,amssymb,bm,times,fancyhdr}
-\RequirePackage{epigraph, titlesec, textcomp, ctex}
+\RequirePackage{epigraph, titlesec, textcomp}
 \RequirePackage{hyperref,caption,titletoc}
 
 \DeclareCaptionFont{wuhao}{\zihao{5}}
@@ -26,9 +26,9 @@
 \renewcommand{\thetable}{\arabic{table}}   %图表的计数方式
 
 
-\renewcommand{\contentsname}{\heiti\zihao{3}{\textbf{目~录}\vspace{1\baselineskip}}}
+\renewcommand{\contentsname}{{\heiti\zihao{3}\textbf{目~录}\vspace{1\baselineskip}}}
 
-\renewcommand\refname{\heiti\zihao{-3}{\textbf{参~考~文~献}}}
+\renewcommand\refname{{\heiti\zihao{-3}\textbf{参~考~文~献}}}
 
 
 
@@ -43,13 +43,16 @@
 \newcommand{\newContects}{section}
 
 
-%全局英文字体
+% 全局英文字体
 \setmainfont{Times New Roman}
-%全文字体
-\setCJKmainfont{fonts/simsun.ttc}
-%重新定义宋体命令，使用simsun.ttc以支持生僻字
-\setCJKfamilyfont{zhsong}{fonts/simsun.ttc}
-\renewcommand{\songti}{\CJKfamily{zhsong}} 
+\newfontfamily\tnr{Times New Roman}
+\newfontfamily\arialfont{Arial}
+% 正文中文字体
+\setCJKmainfont{simsun.ttc}[Path=fonts/, UprightFont=*]
+% 正文走宋体，标题类按规范使用黑体
+\newCJKfontfamily\songti{simsun.ttc}[Path=fonts/, UprightFont=*]
+\newCJKfontfamily\heiti[Path=/System/Library/Fonts/]{STHeiti Medium.ttc}
+\newCJKfontfamily\songtibold{songti-bold.otf}[Path=fonts/, UprightFont=*]
 %设置页眉的横线
 \renewcommand{\headrule}{%
     \hrule width\headwidth height1.5pt % 粗直线
@@ -82,7 +85,10 @@
 %//相关设置
 \renewcommand{\tableofcontents}{%
 	\pagestyle{plain}
-	\savedtableofcontents	
+	\begingroup
+	\setstretch{1}
+	\savedtableofcontents
+	\endgroup
 	%将有关正文页面的设置移到缩略语插入后
 }
 
@@ -95,7 +101,7 @@
         \phantomsection % 添加超链接的目标位置
 	\hypertarget{references}{}     % 设置超链接的目标位置
         \setstretch{1.25}
-        \addcontentsline{toc}{\newContects}{\songti\textbf{参考文献}} % \zihao{-4}
+        \addcontentsline{toc}{\newContects}{参考文献}
         \songti\zihao{5}
         \savedbibliographystyle{#1}
 }
@@ -106,17 +112,17 @@
 	\newpage
     \pagenumbering{Roman}
 	\thispagestyle{fancy}
-	\fancyhead[C]{\songti\zihao{5}{\titleCN}}
-	\fancyfoot[C]{\songti\zihao{5}{\thepage}}
+		\fancyhead[C]{{\songti\zihao{5}\titleCN}}
+		\fancyfoot[C]{{\tnr\zihao{5}\thepage}}
         % 让加入的目录带超链接	
         \phantomsection % 添加超链接的目标位置
 	\hypertarget{abstractCN}{} % 设置超链接的目标位置
-	\addcontentsline{toc}{\newContects}{\songti\textbf{摘~要}} % 在目录中显示摘要
+		\addcontentsline{toc}{\newContects}{摘~要}
 	\vspace{1\baselineskip}
 	\begin{center}
         % {\heiti\zihao{3}
-		\heiti\zihao{3}{\textbf{~\\}}
-		\heiti\zihao{3}{\textbf{摘~~要}}
+			{\heiti\zihao{3}\textbf{~\\}}
+			{\heiti\zihao{3}\textbf{摘~~要}}
 	\end{center}
 	\vspace{1\baselineskip}
 	\songti\zihao{-4}
@@ -124,8 +130,8 @@
 
 %中文关键词
 \newenvironment{keywordCN}{
-        \fancyhead[C]{\songti\zihao{5}{\titleCN}}
-	\fancyfoot[C]{\songti\zihao{5}{\thepage}}
+	        \fancyhead[C]{{\songti\zihao{5}\titleCN}}
+		\fancyfoot[C]{{\tnr\zihao{5}\thepage}}
         \vspace{2\baselineskip}	%空两行
 	\songti\zihao{-4}
         \thispagestyle{fancy}
@@ -137,30 +143,30 @@
 \newenvironment{abstractEN}{
 	\newpage
 	\thispagestyle{fancy}
-	\fancyhead[C]{\songti\zihao{5}{\titleEN}}
-	\fancyfoot[C]{\songti\zihao{5}{\thepage}}
+		\fancyhead[C]{{\tnr\zihao{5}\titleEN}}
+		\fancyfoot[C]{{\tnr\zihao{5}\thepage}}
  
     \phantomsection % 添加超链接的目标位置
 	\hypertarget{abstractEN}{} % 设置超链接的目标位置
 	%\addcontentsline{toc}{\newContects}{\textbf{ABSTRACT}} %\zihao{-4}% 在目录中显示摘要
-	\addcontentsline{toc}{\newContects}{\textbf{\textrm{ABSTRACT}}} %
-	\vspace{1\baselineskip}	
-	\begin{center}
-		\songti\zihao{3}{\textbf{~\\}}
-		\setmainfont{Arial}{\zihao{3}{\textbf{ABSTRACT}} }	
-	\end{center}
-	\vspace{1\baselineskip}
-	\songti\zihao{-4}
+		\addcontentsline{toc}{\newContects}{ABSTRACT}
+		\vspace{1\baselineskip}	
+			\begin{center}
+				{\songti\zihao{3}\textbf{~\\}}
+				{{\arialfont\zihao{3}\textbf{ABSTRACT}}}
+			\end{center}
+		\vspace{1\baselineskip}
+		\tnr\zihao{-4}
 }{}
 
 %英文关键词
 \newenvironment{keywordEN}{
-	\fancyhead[C]{\songti\zihao{5}{\titleEN}}
-	\fancyfoot[C]{\songti\zihao{5}{\thepage}}
+	\fancyhead[C]{{\tnr\zihao{5}\titleEN}}
+	\fancyfoot[C]{{\tnr\zihao{5}\thepage}}
 	\vspace{2\baselineskip}	%空两行
-	\songti\zihao{-4}
+	\tnr\zihao{-4}
     \thispagestyle{fancy}
-	\noindent{\textbf{Key words: }}
+	\noindent{{\tnr\zihao{-4}\textbf{Key words: }}}
  }
 {\newpage}
 
@@ -170,16 +176,16 @@
 	% \thispagestyle{fancy}
 	%含有this样式仅当前页，表格跨页后页眉消失，改为去掉this后续页页眉正常显示
 	\pagestyle{fancy}
-	\fancyhead[C]{\songti\zihao{5}{符号和缩略语说明}}
-	\fancyfoot[C]{\songti\zihao{5}{\thepage}}
+		\fancyhead[C]{{\songti\zihao{5}符号和缩略语说明}}
+		\fancyfoot[C]{{\tnr\zihao{5}\thepage}}
      \phantomsection % 添加超链接的目标位置
 	\hypertarget{signAndABC}{} % 设置超链接的目标位置
-	\addcontentsline{toc}{\newContects}{\textbf{符号和缩略语说明}} % 在目录中显示摘要\zihao{-4}
+		\addcontentsline{toc}{\newContects}{符号和缩略语说明}
 	\vspace{1\baselineskip}	
-	\begin{center}
-		\songti\zihao{3}{\textbf{~\\}}
-		{\heiti\zihao{3}{\textbf{符号和缩略语说明}} }	
-	\end{center}
+		\begin{center}
+			{\songti\zihao{3}\textbf{~\\}}
+			{\heiti\zihao{3}\textbf{符号和缩略语说明}}	
+		\end{center}
 	\vspace{1\baselineskip}
 	\songti\zihao{-4}
 }{\newpage}
@@ -190,15 +196,14 @@
 	\newpage
        \phantomsection % 添加超链接的目标位置
 	\hypertarget{szuAppendix}{} % 设置超链接的目标位置
-	\addcontentsline{toc}{\newContects}{\textbf{致~谢}} % 在目录中显示附录 \zihao{-4}
-	\vspace{1\baselineskip}	
+	\addcontentsline{toc}{\newContects}{致~谢}
+	\vspace*{24pt}
 	\begin{center}
-        \songti\zihao{3}{\textbf{~\\}}
-        \heiti\bfseries\zihao{3}{#1}
+	        {\heiti\bfseries\zihao{3}#1}
 	\end{center}
- 
-	\vspace{0.5\baselineskip}
-	\songti\zihao{5}
+	\vspace{18pt}
+	\songti\zihao{-4}
+	\setlength{\baselineskip}{23pt}
 }{}
 
 
@@ -208,26 +213,20 @@
 
 	\newpage 
     \thispagestyle{fancy}
-	\fancyhead[C]{\songti\zihao{5}{\titleEN}}
-	\fancyfoot[C]{\songti\zihao{5}{\thepage}}
+		\fancyhead[C]{{\songti\zihao{5}#1}}
+		\fancyfoot[C]{{\tnr\zihao{5}\thepage}}
       \phantomsection % 添加超链接的目标位置
 	\hypertarget{szuAppendixB}{} % 设置超链接的目标位置
-	\addcontentsline{toc}{\newContects}{\textcolor{black}{\textbf{#1}}} % 在目录中显示附\zihao{-4}
-	\vspace{1\baselineskip}	
-	\begin{center}
-        \songti\zihao{3}{\textbf{~\\}}
-        \heiti\bfseries\zihao{3}{#1}
-	\end{center}
- 
-	\vspace{0.5\baselineskip}
-	\songti\zihao{5}
+	\addcontentsline{toc}{\newContects}{#1}
+		\vspace*{24pt}
+		\begin{center}
+	        {\heiti\bfseries\zihao{3}#1}
+		\end{center}
+		\vspace{18pt}
+		\songti\zihao{-4}
+		\setlength{\baselineskip}{23pt}
 }{}
 
-
-
-
-\setCJKfamilyfont{sectionfont}{SimHei} % 设置一级和二级标题字体为黑体
-\setCJKfamilyfont{subsectionfont}{SimHei} 
 
 
 
@@ -236,28 +235,35 @@
 
 \ctexset{
 		section={
-				format+ = \heiti\bfseries\zihao{3}\sectionef,
+				format+ = \centering\heiti\bfseries\zihao{3},
 				name = {第,章},
-				number = \chinese{section}
-	}
+				number = \chinese{section},
+				beforeskip = 24pt,
+				afterskip = 18pt
+		}
 }	
 
 
-\titleformat{\subsection}{\zihao{-3}\heiti\bfseries\sectionef}{\thesubsection}{1em}{}
+\titleformat{\subsection}{\zihao{-3}\heiti\bfseries}{\thesubsection}{1em}{}
+\titlespacing*{\subsection}{0pt}{24pt}{6pt}
 
-\titleformat{\subsubsection}{\zihao{4}\bfseries\fontspec{fonts/songti-bold.otf}}{\thesubsubsection}{1em}{}
+\newfontfamily\sectiontitlefont{songti-bold.otf}[Path=fonts/, UprightFont=*]
+
+\titleformat{\subsubsection}{\zihao{4}\songtibold}{\thesubsubsection}{1em}{}
+\titlespacing*{\subsubsection}{0pt}{12pt}{6pt}
 
 %定义四级标题样式
-\titleformat{\paragraph}{\zihao{-4}\bfseries\fontspec{fonts/songti-bold.otf}}{\theparagraph}{1em}{}
+\titleformat{\paragraph}[hang]{\zihao{-4}\songtibold}{\theparagraph}{1em}{}
+\titlespacing*{\paragraph}{0pt}{12pt}{6pt}
 
 % 定义目录标题样式
-\titlecontents{section}[0em]{\bfseries\fontspec{fonts/songti-bold.otf}\zihao{-4}}{\contentspush{\thecontentslabel\hspace{1em}}}{}{\titlerule*[0.4pc]{.}\contentspage\vspace{1.6pt}}%
+\titlecontents{section}[0em]{\songti\bfseries\zihao{-4}\setlength{\baselineskip}{20pt}}{\contentspush{\thecontentslabel\hspace{1em}}}{}{\titlerule*[0.4pc]{.}\contentspage}[\vspace{0pt}]%
 
 %\titlecontents{section}[0em]{\bfseries\zihao{-4}}{\contentspush{\thecontentslabel\hspace{1em}}}{}{\titlerule*[0.4pc]{.}\contentspage\vspace{1.6pt}}%
 
-\titlecontents{subsection}[1em]{\fontspec{fonts/simsun.ttc}\zihao{-4}}{{\thecontentslabel}\hspace{1em}}{}{\titlerule*[0.4pc]{.}\contentspage\vspace{1.6pt}}
+\titlecontents{subsection}[1em]{\songti\zihao{-4}\setlength{\baselineskip}{20pt}}{{\thecontentslabel}\hspace{1em}}{}{\titlerule*[0.4pc]{.}\contentspage}[\vspace{0pt}]
 
-\titlecontents{subsubsection}[1.8em]{\fontspec{fonts/simsun.ttc}\zihao{-4}}{\thecontentslabel\hspace{1em}}{}{\titlerule*[0.4pc]{.}\contentspage\vspace{1.6pt}}
+\titlecontents{subsubsection}[2em]{\songti\zihao{-4}\setlength{\baselineskip}{20pt}}{\thecontentslabel\hspace{1em}}{}{\titlerule*[0.4pc]{.}\contentspage}[\vspace{0pt}]
 
 
 

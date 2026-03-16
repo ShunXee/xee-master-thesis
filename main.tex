@@ -1,11 +1,10 @@
-\documentclass[UTF8,AutoFakeBold]{template/szu-master}
-\renewcommand{\titleCN}{基于XXX研究}
-\renewcommand{\titleEN}{The Research Base on XXXX}
+\documentclass[UTF8,AutoFakeBold]{szu-master}
+\renewcommand{\titleCN}[1][~]{基于XXX研究}
+\renewcommand{\titleEN}[1][~]{The Research Base on XXXX}
 
 % 源代码地址：https://github.com/Cao-Wuhui/SZU_Latex_Master_Template
 
 % 文本
-\usepackage{ctex}
 \usepackage{fancyhdr}
 %可跨页表格引入
 \usepackage{longtable}
@@ -36,7 +35,7 @@
 
 % \usepackage{algorithmicx,algorithm}
 \usepackage{epsfig,bm}
-\usepackage{template/slashbox}
+\usepackage{slashbox}
 \usepackage{enumitem}
 \usepackage{pifont} % 带圈数字 \ding{172}=① \ding{173}=② 等
 \usepackage{amssymb,amsthm,amssymb}
@@ -64,7 +63,7 @@
 
 
 % 重新调整参考文献项目之间的行距
-\usepackage{template/bib-spacing}
+\usepackage{bib-spacing}
 \setlength{\bibspacing}{1\baselineskip}
 
 %给目录和参考文献加上超链接
@@ -77,6 +76,7 @@
 % \setlength{\headheight}{15pt}
 \setlength{\headheight}{23pt}
 \setlength{\headsep}{7.25mm}
+\setlength{\parindent}{2em}
 
 
 \hypersetup{
@@ -87,32 +87,6 @@
 
 % 在导言区定义新字体族
 % \newfontfamily\sectionef{Arial}
-
-\ctexset{
-		section={
-				format+ = \heiti\bfseries\zihao{3}\sectionef,
-				name = {第,章},
-				number = \chinese{section}
-	}
-}	
-
-
-\titleformat{\subsection}{\zihao{-3}\heiti\bfseries\sectionef}{\thesubsection}{1em}{}
-
-\titleformat{\subsubsection}{\zihao{4}\bfseries\fontspec{fonts/songti-bold.otf}}{\thesubsubsection}{1em}{}
-
-
-% 定义目录标题样式
-\titlecontents{section}[0em]{\bfseries\fontspec{fonts/songti-bold.otf}\zihao{-4}}{\contentspush{\thecontentslabel\hspace{1em}}}{}{\titlerule*[0.4pc]{.}\contentspage\vspace{1.6pt}}%
-
-%\titlecontents{section}[0em]{\bfseries\zihao{-4}}{\contentspush{\thecontentslabel\hspace{1em}}}{}{\titlerule*[0.4pc]{.}\contentspage\vspace{1.6pt}}%
-
-\titlecontents{subsection}[1em]{\fontspec{fonts/simsun.ttc}\zihao{-4}}{{\thecontentslabel}\hspace{1em}}{}{\titlerule*[0.4pc]{.}\contentspage\vspace{1.6pt}}
-
-\titlecontents{subsubsection}[1.8em]{\fontspec{fonts/simsun.ttc}\zihao{-4}}{\thecontentslabel\hspace{1em}}{}{\titlerule*[0.4pc]{.}\contentspage\vspace{1.6pt}}
-
-
-
 
 %document begin
 \begin{document}
@@ -146,7 +120,7 @@
 % 全局页眉 设置为章节标题
 \fancyhead[C]{\songti\zihao{5}\nouppercase\leftmark}
 %全局页号设置
-\fancyfoot[C]{\songti\zihao{5}{\thepage}}
+\fancyfoot[C]{\tnr\zihao{5}{\thepage}}
 \setcounter{page}{1}
 
 %%%%%%%%% 图索引和表索引
@@ -167,13 +141,13 @@
 \@addtoreset{table}{section}
 \makeatother  %
 \renewcommand{\thetable}{\thesection-\arabic{table}}
-\captionsetup[table]{labelsep=space, labelfont=bf}
+\captionsetup[table]{labelsep=space, labelfont=bf, textfont=bf, font={wuhao}, justification=centering, singlelinecheck=false, skip=6pt}
 %%%%%%%% 图每节重新标号
 \makeatletter %
 \@addtoreset{figure}{section}
 \makeatother  %
 \renewcommand{\thefigure}{\thesection-\arabic{figure}}
-\captionsetup[figure]{labelsep=space, labelfont=bf}
+\captionsetup[figure]{labelsep=space, labelfont=bf, textfont=bf, font={wuhao}, justification=centering, singlelinecheck=false, skip=6pt}
 %labelfont=normalfont}
 % subfigure重新编号\ref
 \makeatletter
@@ -195,10 +169,10 @@
 %参考文献
 \fancyhead{}
 \fancyhead[C]{\songti\zihao{5}{参考文献}}
-\fancyfoot[C]{\songti\zihao{5}{\thepage}}
+\fancyfoot[C]{\tnr\zihao{5}{\thepage}}
 
 \begin{spacing}{1.8}
-	\bibliographystyle{template/gbt7714-2005} 
+		\bibliographystyle{gbt7714-2005} 
 	\bibliography{bib/ref-paper}
 \end{spacing}
 
@@ -207,13 +181,13 @@
 \clearpage
 \fancyhead{}
 \fancyhead[C]{\songti\zihao{5}{致谢}}
-\fancyfoot[C]{\songti\zihao{5}{\thepage}}
+\fancyfoot[C]{\tnr\zihao{5}{\thepage}}
 \input{chapters/thanks.tex}
 
 \clearpage
 \fancyhead{}
 \fancyhead[C]{\songti\zihao{5}{攻读硕士学位期间的学术成果}}
-\fancyfoot[C]{\songti\zihao{5}{\thepage}}
+\fancyfoot[C]{\tnr\zihao{5}{\thepage}}
 \input{chapters/my-papers.tex}
 
 % 添加学术评语目录条目

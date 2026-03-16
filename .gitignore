@@ -43,3 +43,6 @@
 *.sav
 *.tmp
 *.synctex\(busy\)
+docs/ref-docs/
+main.pdf
+.latexmkrc

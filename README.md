@@ -1,3 +1,123 @@
+# SZU Master Thesis LaTeX Template
+
+这是一个基于上游仓库继续整理和维护的深圳大学硕士学位论文 LaTeX 模板。当前版本已经按新的目录结构重组，并围绕 2024 年学校格式规范做了可用性和版式收敛。
+
+本仓库定位：
+
+- 论文主入口为 `main.tex`
+- 编译方式固定为 `XeLaTeX`
+- 根目录尽量只保留入口和项目说明
+- 模板文件、字体、参考文献、正文、官方文档分目录管理
+
+## 当前目录结构
+
+```text
+.
+├── main.tex
+├── README.md
+├── LICENSE
+├── .gitignore
+├── .latexmkrc
+├── bib/
+│   └── ref-paper.bib
+├── chapters/
+│   ├── abstract.tex
+│   ├── sign-and-abc.tex
+│   ├── cp-1.tex ... cp-5.tex
+│   ├── thanks.tex
+│   ├── my-papers.tex
+│   └── master-page.pdf
+├── docs/
+│   └── official-docs/
+├── figure/
+├── fonts/
+│   ├── simsun.ttc
+│   └── songti-bold.otf
+├── tables/
+│   └── exp.tex
+└── template/
+    ├── szu-master.cls
+    ├── bib-spacing.sty
+    ├── gbt7714.sty
+    ├── gbt7714-2005.bst
+    ├── gbt7714-2015.bst
+    ├── gbt7714-numerical.bst
+    └── slashbox.sty
+```
+
+## 编译方法
+
+推荐直接在项目根目录运行：
+
+```bash
+latexmk main.tex
+```
+
+如果不使用 `latexmk`，可以手动运行：
+
+```bash
+xelatex main.tex
+bibtex main
+xelatex main.tex
+xelatex main.tex
+```
+
+说明：
+
+- 编译器必须使用 `XeLaTeX`
+- 本仓库自带 `.latexmkrc`，会自动补齐 `template/` 和 `bib/` 的搜索路径
+- 当前参考文献样式默认使用 `GB/T 7714-2005`
+
+## 你通常需要修改哪些文件
+
+- `main.tex`
+  - 论文标题
+  - 编译入口顺序
+  - 页眉页脚和参考文献调用
+- `chapters/abstract.tex`
+  - 中英文摘要与关键词
+- `chapters/cp-1.tex` ... `chapters/cp-5.tex`
+  - 正文各章节
+- `chapters/thanks.tex`
+  - 致谢
+- `chapters/my-papers.tex`
+  - 攻读硕士学位期间的科研成果
+- `bib/ref-paper.bib`
+  - 文献条目
+- `chapters/master-page.pdf`
+  - 封面 PDF
+
+## 格式说明
+
+当前版本主要按以下材料收敛：
+
+- `docs/official-docs/2024119355662深圳大学研究生学位论文基本要求及格式规范（2024年1月）.pdf`
+
+目前状态：
+
+- 中文摘要、英文摘要、页眉页脚、正文层级、致谢、科研成果页已经做过一轮格式收敛
+- 参考文献样式当前切回 `GB/T 7714-2005`
+- 对学校规范来说，这意味着正文整体观感已较接近，但参考文献标准版本与 2024 规范文件并不完全一致
+
+## 与上游的关系
+
+这个版本是基于上游仓库 fork 后继续整理得到的版本，主要工作包括：
+
+- 目录重组
+- 文件命名统一
+- 清理无效和历史遗留文件
+- 调整字体映射和类文件
+- 修复本地编译链
+- 按官方 PDF 做一轮格式检查与收敛
+
+上游项目与历史贡献信息保留在下方，作为历史记录。
+
+## 历史记录
+
+以下内容保留原 README 文本，仅作为历史记录，不代表当前目录结构或当前默认配置。
+
+---
+
 ## SZU 2026最新版Latex硕士论文正文模板
 
 > 模板源文件来自深圳大学计算机与软件学院历年流传下的模板内容进行修改，
